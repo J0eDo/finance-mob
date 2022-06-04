@@ -1,9 +1,8 @@
-import 'dart:developer';
-import 'dart:html';
-import 'dart:ui';
-
-import 'package:courses_control/colors.dart';
+import 'package:courses_control/const.dart';
+import 'package:courses_control/components/Expenses.dart';
+import 'package:courses_control/components/Incomes.dart';
 import 'package:courses_control/components/MainBlock.dart';
+import 'package:courses_control/components/Statistic.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,6 +18,11 @@ class MyApp extends StatelessWidget {
       title: 'Course',
       theme: ThemeData(),
       home: const MyHomePage(title: 'Finance'),
+      routes: {
+        "expenses": ((context) => const Expenses()),
+        "statistic": ((context) => const Statistic()),
+        "incomes": ((context) => const Incomes()),
+      },
     );
   }
 }
@@ -44,9 +48,24 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const <MainBlock>[
-            MainBlock(title: "Statistic", titleColor: Colors.blue),
-            MainBlock(title: "Expenses", titleColor: Colors.red,),
-            MainBlock(title: "Incomes", titleColor: Colors.green,),
+            MainBlock(
+              title: "Statistic",
+              titleColor: Colors.blue,
+              picture: 'assets/images/statistics.jpg',
+              page: "statistic",
+            ),
+            MainBlock(
+              title: "Expenses",
+              titleColor: Colors.red,
+              picture: 'assets/images/expenses.png',
+              page: "expenses",
+            ),
+            MainBlock(
+              title: "Incomes",
+              titleColor: Colors.green,
+              picture: 'assets/images/incomes.png',
+              page: "incomes",
+            )
           ],
         ),
       ),
